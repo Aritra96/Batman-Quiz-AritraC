@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Assignment 2 </title>
+</head>
+<!-- The Quiz Content -->
+<body>
+  <h1> Batman Quiz </h1>
+  <div id="app">
+    <h2> Score : {{score}} </h2>
+    <div v-for="question in questions">
+      <h3>{{question.text}}</h3>
+      <ul>
+        <li v-for="option in question.options">
+          <button @click="option.isCorrect ? rightAnswer() : wrongAnswer()" type="button">
+            {{option.text}}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Functions and Data Declaration in JS -->
+  <script src="js/vue.js"> </script>
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      questions: [
+        {
+          text: "1. Who is the creator of Batman?",
+          options: [
+            {
+              text: "Bob Kane",
+              isCorrect: true,
+              userAnswered: true
+            },
+            {
+              text: "Christopher Nolan",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Bruce Wayne",
+              isCorrect: false,
+              userAnswered: false
+            },
+          ]
+        },
+        {
+          text: "2. What is Batman's greatest weakness?",
+          options: [
+            {
+              text: "Superman, duh!",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Arkham Asylum",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "None, because he's Batman",
+              isCorrect: true,
+              userAnswered: true
+            },
+          ]
+        },
+        {
+          text: "3. Who is Damian Wayne?",
+          options: [
+            {
+              text: "Red Robin!",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Regular Robin!",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Batman's Son",
+              isCorrect: true,
+              userAnswered: true
+            },
+          ]
+        },
+        {
+          text: "4. Who is Batman's greatest obsession?",
+          options: [
+            {
+              text: "Martha Wayne",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Joker",
+              isCorrect: true,
+              userAnswered: true
+            },
+            {
+              text: "Selena Kyle",
+              isCorrect: false,
+              userAnswered: false
+            },
+          ]
+        },
+        {
+          text: "5. Who is similar to Batman in the Marvel Comic Universe?",
+          options: [
+            {
+              text: "Green Arrow",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Captain America",
+              isCorrect: false,
+              userAnswered: false
+            },
+            {
+              text: "Iron Man",
+              isCorrect: true,
+              userAnswered: true
+            },
+          ]
+        }
+      ],
+      score: 0,
+    },
+    methods: {
+      rightAnswer: function(){
+        this.score+=5;
+        alert("Correct! Please move on to the next question.");
+
+      },
+
+      wrongAnswer: function(){
+        alert("Incorrect!");
+      }
+    }
+  })
+  </script>
+<!-- Styling in CSS -->
+  <style>
+  body{
+    background: url("images/batman2.jpg")
+  }
+  h1{
+    color: white;
+  }
+  h2{
+    color: white;
+  }
+  h3{
+    color: white;
+  }
+  ul{
+    color: white;
+  }
+  button{
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 20px 20px;
+    width: 20%;
+  }
+  </style>
+
+</body>
+</html>
